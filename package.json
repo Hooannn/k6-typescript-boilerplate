@@ -1,0 +1,35 @@
+{
+  "name": "k6-typescript-boilerplate",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reusable k6 boilerplate with first-class TypeScript support.",
+  "type": "module",
+  "packageManager": "pnpm@11.4.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "clean": "rimraf dist .tmp",
+    "build": "node ./scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "bundle": "rimraf dist .tmp && tsc --noEmit && node ./scripts/build.mjs",
+    "archive": "rimraf dist .tmp && tsc --noEmit && node ./scripts/build.mjs && node ./scripts/archive.mjs",
+    "test:smoke": "rimraf dist .tmp && tsc --noEmit && node ./scripts/build.mjs && node ./scripts/run-k6.mjs dist/tests/smoke.js",
+    "test:api": "rimraf dist .tmp && tsc --noEmit && node ./scripts/build.mjs && node ./scripts/run-k6.mjs dist/tests/api.load.js",
+    "test:browser": "rimraf dist .tmp && tsc --noEmit && node ./scripts/build.mjs && node ./scripts/run-k6.mjs dist/tests/browser.smoke.js"
+  },
+  "keywords": [
+    "k6",
+    "typescript",
+    "performance",
+    "load-testing"
+  ],
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "@types/k6": "^0.57.0",
+    "esbuild": "^0.25.6",
+    "fast-glob": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3"
+  }
+}
